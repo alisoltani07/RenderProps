@@ -1,25 +1,25 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class withNetworkStatus extends Component {
   state = {
-    isActive: navigator.onLine
+    isActive: navigator.onLine,
   };
   componentDidMount() {
-    window.addEventListener("online", this.statusChange);
-    window.addEventListener("offline", this.statusChange);
+    window.addEventListener('online', this.statusChange);
+    window.addEventListener('offline', this.statusChange);
   }
   componentWillUnmount() {
-    window.removeEventListener("online", this.statusChange);
-    window.removeEventListener("offline", this.statusChange);
+    window.removeEventListener('online', this.statusChange);
+    window.removeEventListener('offline', this.statusChange);
   }
   statusChange = event => {
     if (event.type) {
       this.setState({
-        isActive: event.type === "online"
+        isActive: event.type === 'online',
       });
     }
   };
-  rernder() {
+  render() {
     return this.props.children({ isActive: this.state.isActive });
   }
 }
