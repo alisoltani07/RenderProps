@@ -1,27 +1,27 @@
-import React, { Component } from "react";
-import withActiveTab from "./withActiveTab";
-import ActiveDetaile from "./ActiveDetaile";
-import NetworkActiveVisual from "./NetworkActiveVisual";
-import withNetworkStatus from "./withNetworkstatus";
+import React, { Component } from 'react';
+import WithActiveTab from './withActiveTab';
+import ActiveDetaile from './ActiveDetaile';
+import NetworkActiveVisual from './NetworkActiveVisual';
+import WithNetworkStatus from './withNetworkstatus';
 
 export default class App extends Component {
   render() {
     return (
       <>
-        <withActiveTab>
+        <WithActiveTab>
           {({ isActive: isTabActive }) => (
-            <withNetworkStatus>
+            <WithNetworkStatus>
               {({ isActive: isOnline }) => (
                 <NetworkActiveVisual
                   isTabActive={isTabActive}
                   isOnline={isOnline}
                 />
               )}
-            </withNetworkStatus>
+            </WithNetworkStatus>
           )}
-        </withActiveTab>
+        </WithActiveTab>
 
-        <NetworkActiveVisual isOnlineColor={"green"} isOfflineColor={"red"} />
+        <NetworkActiveVisual isOnlineColor={'green'} isOfflineColor={'red'} />
       </>
     );
   }
